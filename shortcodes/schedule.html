@@ -55,7 +55,9 @@
                 </p>
                 {{ end }}
             {{ end }}
-            </td><td>
+            </td>
+            {{ if $ifmisc }}
+            <td>
             {{ range $misc }}
                 {{ $page := index . "page" }}
                 {{ $notes := index . "notes" }}
@@ -68,6 +70,7 @@
                 {{ end }}
             {{ end }}
             </td>
+            {{ end }}
         </tr>
     {{ end }}
     </tbody>
