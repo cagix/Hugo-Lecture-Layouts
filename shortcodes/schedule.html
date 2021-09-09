@@ -61,10 +61,8 @@
                 {{ $topic := index . "topic" }}
                 {{ $due := index . "due" }}
                 {{ with $.Site.GetPage $topic }}
-                <p>
                     <a href="{{- .Permalink | safeURL -}}"><strong>{{- .Title -}}</strong></a>
-                    {{ if $due }}<br>(Abgabe: {{- $due -}}){{ end }}
-                </p>
+                    {{ if $due }}<br>(Abgabe: {{- $due -}})<br>{{ end }}
                 {{ end }}
             {{ end }}
             </td>
