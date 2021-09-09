@@ -21,6 +21,7 @@
         {{ $lecture := index $w "lecture" }}
         {{ $assignment := index $w "assignment" }}
         {{ $misc_column := index $w "misc_column" }}
+        {{ $misc_lecture := index $w "misc_lecture" }}
         <tr>
             <td>
                 {{ printf "%d" (add $i 1) }}
@@ -44,6 +45,17 @@
                 </li>
             {{ end }}
             </ul>
+            {{ range $misc_lecture }}
+                {{ $page := index . "page" }}
+                {{ $notes := index . "notes" }}
+                {{ if $page }}
+                    {{ with $.Site.GetPage $page }}
+                        <p><a href="{{- .Permalink | safeURL -}}"><strong>{{- $notes | default .Title -}}</strong></a></p>
+                    {{ end }}
+                {{ else if $notes }}
+                    <p>{{- $notes | markdownify -}}</p>
+                {{ end }}
+            {{ end }}
             </td><td>
             {{ range $assignment }}
                 {{ $topic := index . "topic" }}
