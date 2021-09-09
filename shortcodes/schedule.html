@@ -47,8 +47,7 @@
                 {{ with $.Site.GetPage $topic }}
                 <p>
                     <a href="{{- .Permalink | safeURL -}}"><strong>{{- .Title -}}</strong></a>
-                    <br>
-                    {{ if $due }}{{ printf " (Abgabe: %s)" $due }}{{ end }}
+                    {{ if $due }}<br>{{ printf "(Abgabe: %s)" $due }}{{ end }}
                 </p>
                 {{ end }}
             {{ end }}
