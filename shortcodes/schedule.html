@@ -50,10 +50,10 @@
                 {{ $notes := index . "notes" }}
                 {{ if $page }}
                     {{ with $.Site.GetPage $page }}
-                        <p><a href="{{- .Permalink | safeURL -}}"><strong>{{- $notes | default .Title -}}</strong></a></p>
+                        <a href="{{- .Permalink | safeURL -}}"><strong>{{- $notes | default .Title -}}</strong></a><br>
                     {{ end }}
                 {{ else if $notes }}
-                    <p>{{- $notes | markdownify -}}</p>
+                    {{- $notes | markdownify -}}<br>
                 {{ end }}
             {{ end }}
             </td><td>
@@ -75,10 +75,10 @@
                 {{ $notes := index . "notes" }}
                 {{ if $page }}
                     {{ with $.Site.GetPage $page }}
-                        <p><a href="{{- .Permalink | safeURL -}}"><strong>{{- $notes | default .Title -}}</strong></a></p>
+                        <a href="{{- .Permalink | safeURL -}}"><strong>{{- $notes | default .Title -}}</strong></a><br>
                     {{ end }}
                 {{ else if $notes }}
-                    <p>{{- $notes | markdownify -}}</p>
+                    {{- $notes | markdownify -}}<br>
                 {{ end }}
             {{ end }}
             </td>
