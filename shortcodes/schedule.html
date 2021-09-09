@@ -8,11 +8,11 @@
         <th>Woche</th>
         <th>Vorlesung</th>
         <th>Praktikum/Übung</th>
-        {{ $ifmisc := false }}
+        {{ $if_misc_column := false }}
         {{ range $plan }}
-            {{ with index . "misc" }}{{ $ifmisc = true }}{{ end }}
+            {{ with index . "misc_column" }}{{ $if_misc_column = true }}{{ end }}
         {{ end }}
-        {{ with $ifmisc }}<th>Verschiedenes</th>{{ end }}
+        {{ with $if_misc_column }}<th>Verschiedenes</th>{{ end }}
         </tr>
     </thead>
     <tbody>
@@ -20,7 +20,7 @@
         {{ $week := index $w "week" }}
         {{ $lecture := index $w "lecture" }}
         {{ $assignment := index $w "assignment" }}
-        {{ $misc := index $w "misc" }}
+        {{ $misc_column := index $w "misc_column" }}
         <tr>
             <td>
                 {{ printf "%d" (add $i 1) }}
@@ -56,9 +56,9 @@
                 {{ end }}
             {{ end }}
             </td>
-            {{ if $ifmisc }}
+            {{ if $if_misc_column }}
             <td>
-            {{ range $misc }}
+            {{ range $misc_column }}
                 {{ $page := index . "page" }}
                 {{ $notes := index . "notes" }}
                 {{ if $page }}
