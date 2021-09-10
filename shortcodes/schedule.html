@@ -58,16 +58,18 @@
                 {{ end }}
             {{ end }}
             </td><td>
+            <ul>
             {{ range $assignment }}
                 {{ $topic := index . "topic" }}
                 {{ $due := index . "due" }}
                 {{ with $.Site.GetPage $topic }}
+                <li>
                     <a href="{{- .Permalink | safeURL -}}"><strong>{{- .Title -}}</strong></a>
-                    {{ if $due }}<br>(Abgabe: {{- $due -}})<br>{{ end }}
+                    {{ if $due }}<br>(Abgabe: {{- $due -}}){{ end }}
+                </li>
                 {{ end }}
             {{ end }}
-            {{ if $misc_assignment }}
-            <p>
+            </ul>
             {{ range $misc_assignment }}
                 {{ $page := index . "page" }}
                 {{ $notes := index . "notes" }}
