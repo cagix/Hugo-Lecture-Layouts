@@ -36,13 +36,14 @@
                 {{ $leader := index . "leader" }}
                 {{ $notes := index . "notes" }}
                 {{ with $.Site.GetPage $topic }}
+                <li>
                     {{ $path := replace (strings.TrimSuffix "/" .File.Dir | path.Dir) "/" " > " | upper }}
                     {{if gt (len $path) 1}}{{ printf "%s > " $path }}{{end}}
                     <a href="{{- .Permalink | safeURL -}}"><strong>{{- .Title -}}</strong></a>
-                {{ end }}
-                {{ if $leader }}{{ printf " (%s)" $leader }}{{ end }}
-                {{ if $notes }}<br><em>{{ printf "Hinweis: %s" $notes }}</em>{{ end }}
+                    {{ if $leader }}{{ printf " (%s)" $leader }}{{ end }}
+                    {{ if $notes }}<br><em>{{ printf "Hinweis: %s" $notes }}</em>{{ end }}
                 </li>
+                {{ end }}
             {{ end }}
             </ul>
             {{ range $misc_lecture }}
