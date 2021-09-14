@@ -10,7 +10,7 @@
     {{ $level = . }}
 {{ end }}
 
-{{ id $attachments }}
+{{ if $attachments }}
 <div class="attachments">
     <h{{- $level -}}>{{- $header -}}</h{{- $level -}}>
 
